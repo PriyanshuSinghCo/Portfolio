@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-[1200px] h-20 z-50">
       <div className="bg-opacity-90 bg-[#0a0a0a] h-full flex justify-between items-center px-8 rounded-2xl backdrop-blur-md border border-card-border shadow-2xl shadow-primary-color/20 hover:shadow-primary-color/30 transition-shadow duration-300">
-        <a href="#" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-color to-secondary-color">Priyanshu.dev</a>
+        <a href="#" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-color to-secondary-color">Priyanshu</a>
         <div className="md:hidden text-white text-3xl cursor-pointer" onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
