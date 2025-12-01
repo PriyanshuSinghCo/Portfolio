@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Scheme Preview - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .schemes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .scheme-card {
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .scheme-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .scheme-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .scheme-card .description {
+            color: #9CA3AF;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .color-box {
+            flex: 1;
+            min-width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-end;
+            padding: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .preview-section {
+            margin-top: 20px;
+        }
+
+        .preview-heading {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .preview-text {
+            color: #9CA3AF;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid;
+        }
+
+        /* Option 1: Purple/Blue */
+        .option-1 {
+            background: #0F172A;
+        }
+
+        .option-1 h2 {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-1 .preview-heading {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-1 .btn-primary {
+            background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+            color: white;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .option-1 .btn-outline {
+            border-color: #8B5CF6;
+            color: #8B5CF6;
+        }
+
+        .option-1:hover {
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Option 2: Emerald/Teal */
+        .option-2 {
+            background: #0F172A;
+        }
+
+        .option-2 h2 {
+            background: linear-gradient(135deg, #10B981, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-2 .preview-heading {
+            background: linear-gradient(135deg, #10B981, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-2 .btn-primary {
+            background: linear-gradient(135deg, #10B981, #06B6D4);
+            color: white;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .option-2 .btn-outline {
+            border-color: #10B981;
+            color: #10B981;
+        }
+
+        .option-2:hover {
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Option 3: Orange/Red */
+        .option-3 {
+            background: #0F172A;
+        }
+
+        .option-3 h2 {
+            background: linear-gradient(135deg, #F97316, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-3 .preview-heading {
+            background: linear-gradient(135deg, #F97316, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-3 .btn-primary {
+            background: linear-gradient(135deg, #F97316, #EF4444);
+            color: white;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .option-3 .btn-outline {
+            border-color: #F97316;
+            color: #F97316;
+        }
+
+        .option-3:hover {
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        .recommendation {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            color: #A78BFA;
+        }
+
+        @media (max-width: 768px) {
+            .schemes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Color Scheme</h1>
+        <p class="subtitle">Select the color palette that best represents your brand</p>
+
+        <div class="schemes-grid">
+            <!-- Option 1: Purple/Blue -->
+            <div class="scheme-card option-1">
+                <span class="recommendation">✨ Recommended</span>
+                <h2>Option 1: Purple/Blue</h2>
+                <p class="description">Modern, creative, and tech-forward. Perfect for showcasing innovation and professionalism.</p>
+                
+                <div class="color-palette">
+                    <div class="color-box" style="background: #8B5CF6; color: white;">Purple<br>#8B5CF6</div>
+                    <div class="color-box" style="background: #3B82F6; color: white;">Blue<br>#3B82F6</div>
+                    <div class="color-box" style="background: #EC4899; color: white;">Pink<br>#EC4899</div>
+                </div>
+
+                <div class="preview-section">
+                    <h3 class="preview-heading">Priyanshu Kumar Singh</h3>
+                    <p class="preview-text">Fullstack Developer & Digital Solutions Expert</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">View My Work</button>
+                        <button class="btn btn-outline">Contact Me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2: Emerald/Teal -->
+            <div class="scheme-card option-2">
+                <h2>Option 2: Emerald/Teal</h2>
+                <p class="description">Fresh and modern. Represents growth, success, and innovation in technology.</p>
+                
+                <div class="color-palette">
+                    <div class="color-box" style="background: #10B981; color: white;">Emerald<br>#10B981</div>
+                    <div class="color-box" style="background: #06B6D4; color: white;">Cyan<br>#06B6D4</div>
+                    <div class="color-box" style="background: #F59E0B; color: white;">Amber<br>#F59E0B</div>
+                </div>
+
+                <div class="preview-section">
+                    <h3 class="preview-heading">Priyanshu Kumar Singh</h3>
+                    <p class="preview-text">Fullstack Developer & Digital Solutions Expert</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">View My Work</button>
+                        <button class="btn btn-outline">Contact Me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 3: Orange/Red -->
+            <div class="scheme-card option-3">
+                <h2>Option 3: Orange/Red</h2>
+                <p class="description">Bold and energetic. Perfect for making a strong, memorable impression.</p>
+                
+                <div class="color-palette">
+                    <div class="color-box" style="background: #F97316; color: white;">Orange<br>#F97316</div>
+                    <div class="color-box" style="background: #EF4444; color: white;">Red<br>#EF4444</div>
+                    <div class="color-box" style="background: #8B5CF6; color: white;">Purple<br>#8B5CF6</div>
+                </div>
+
+                <div class="preview-section">
+                    <h3 class="preview-heading">Priyanshu Kumar Singh</h3>
+                    <p class="preview-text">Fullstack Developer & Digital Solutions Expert</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">View My Work</button>
+                        <button class="btn btn-outline">Contact Me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
